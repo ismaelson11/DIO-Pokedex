@@ -10,6 +10,9 @@ function loadPokemonItens(offset, limit) {
         <li class="pokemon ${pokemon.type}">
           <span class="number">#${pokemon.number}</span>
           <span class="name">${pokemon.name}</span>
+          <span class="stats">Height: ${pokemon.height} <br>Weight: ${pokemon.weight}</span>
+          <span class="stats">Weight: ${pokemon.weight}</span>
+
           
           <div class="detail">
             <ol class="types">
@@ -26,6 +29,7 @@ function loadPokemonItens(offset, limit) {
     pokemonList.innerHTML += newHtml;
   });
 }
+
 
 loadPokemonItens(offset, limit)
 
@@ -44,6 +48,14 @@ loadMoreButton.addEventListener('click', () => {
 
 })
 
-pokemonList.addEventListener('click', () => {
-  
-})
+
+pokemonList.addEventListener("click", (event) => {
+  const pokemonItem = event.target.closest("li");
+  const stats = pokemonItem.querySelector(".stats");
+
+  if(stats.style.display === "block"){
+    stats.style.display = "none"
+  } else {
+    stats.style.display = "block"
+  }
+});
